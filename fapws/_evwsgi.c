@@ -157,7 +157,7 @@ http://beej.us/guide/bgnet/output/html/singlepage/bgnet.html
     if (server_name[0] == 0)
         printf("listen on @%s:unix\n", server_name+1);
     else
-        printf("listen on %s:%s\n", server_name, server_port);
+        printf("Servidor corriendo: %s:%s\n", server_name, server_port);
     return Py_None;
 }
 
@@ -187,7 +187,7 @@ static PyObject *py_run_loop(PyObject *self, PyObject *args)
             backend="kqueue";
             break;
     }
-    printf("Using %s as event backend\n", backend);
+    printf("[%s] Utilizado como backend\n", backend);
     ev_io_init(&accept_watcher,accept_cb,sockfd,EV_READ);
     ev_io_start(loop,&accept_watcher);
     ev_signal_init(&signal_watcher, sigint_cb, SIGINT);
